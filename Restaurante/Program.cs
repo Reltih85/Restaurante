@@ -13,7 +13,7 @@ builder.Services.AddDbContext<RestauranteContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 // 🔄 Configuración del UnitOfWork
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>(); // 👈 Aquí va la línea
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>(); 
 
 // 🧩 Agregar controladores con vistas
 builder.Services.AddControllersWithViews();
@@ -59,9 +59,12 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-// 🔁 Rutas MVC por defecto
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+app.UseAuthorization();
+app.MapControllers();
 
 app.Run();

@@ -16,4 +16,5 @@ public partial class Factura
     public DateTime? FechaEmision { get; set; }
 
     public virtual Pedido? Pedido { get; set; }
+
 }

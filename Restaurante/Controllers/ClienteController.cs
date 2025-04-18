@@ -4,7 +4,6 @@ using Restaurante.Models;
 
 namespace Restaurante.Controllers
 
-
 {
     [Route("api/[controller]")]
     [ApiController]
